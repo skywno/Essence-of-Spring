@@ -1,16 +1,8 @@
 package moviebuddy;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,14 +10,14 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import moviebuddy.domain.CsvMovieReader;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
-import moviebuddy.util.FileSystemUtils;
 
 /**
  * @author springrunner.kr@gmail.com
@@ -46,8 +38,10 @@ public class MovieBuddyApplication {
      */
 
     public void run(String[] args) throws Exception {
-    	final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory();
-    	final MovieFinder movieFinder = movieBuddyFactory.movieFinder();
+    	final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieBuddyFactory.class);
+    	final MovieFinder movieFinder = applicationContext.getBean(MovieFinder.class);
+//    	final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory();
+//    	final MovieFinder movieFinder = movieBuddyFactory.movieFinder();
         final AtomicBoolean running = new AtomicBoolean(true);
         final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         final PrintWriter output = new PrintWriter(System.out, false);
