@@ -5,14 +5,17 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
+@Scope("singleton")
 public class MovieFinder {
 	private MovieReader movieReader;
     
 //	@Autowired
-	public MovieFinder(MovieReader movieReader) {
+	public MovieFinder(@Qualifier("csvMovieReader") MovieReader movieReader) {
 		this.movieReader = Objects.requireNonNull(movieReader);
 	}
 	/**

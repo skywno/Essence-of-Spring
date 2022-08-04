@@ -4,21 +4,33 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import moviebuddy.MovieBuddyFactory;
-
+  
 /**
  * @author springrunner.kr@gmail.com
  */
+@SpringJUnitConfig(MovieBuddyFactory.class)
+//@ExtendWith(SpringExtension.class)
+//@ContextConfiguration(classes =MovieBuddyFactory.class) 
 public class MovieFinderTest {
 	
-//	final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory();
-//	final MovieFinder movieFinder = movieBuddyFactory.movieFinder();	
-	final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieBuddyFactory.class);
-	final MovieFinder movieFinder = applicationContext.getBean(MovieFinder.class);
+	@Autowired
+	MovieFinder movieFinder; 
+
+	// 생성자를 이용한 의존관계 주입
+//	@Autowired
+//	MovieFinderTest(MovieFinder movieFinder) {
+//		this.movieFinder = movieFinder;
+//	}
 	
+	// Setter를 이용한 의존관계 주입 
+//	@Autowired
+//	void setMovieFinder(MovieFinder movieFinder) {
+//		this.movieFinder = movieFinder;
+//	}
 	@Test
 	void NotEMpty_directedBy() {
 		List<Movie> movies = movieFinder.directedBy("Michael Bay");
