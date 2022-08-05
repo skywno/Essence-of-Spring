@@ -14,7 +14,7 @@ import moviebuddy.MovieBuddyProfile;
 /**
  * @author springrunner.kr@gmail.com
  */
-@ActiveProfiles(MovieBuddyProfile.CSV_MODE )
+@ActiveProfiles(MovieBuddyProfile.CSV_MODE)
 @SpringJUnitConfig(MovieBuddyFactory.class)
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration(classes =MovieBuddyFactory.class) 
