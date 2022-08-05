@@ -10,18 +10,18 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import moviebuddy.MovieBuddyFactory;
 import moviebuddy.MovieBuddyProfile;
-import moviebuddy.data.JaxbMovieReader;
+import moviebuddy.data.XmlMovieReader;
 import moviebuddy.domain.Movie;
 
 @ActiveProfiles(MovieBuddyProfile.XML_MODE)
 @SpringJUnitConfig(MovieBuddyFactory.class)
-public class JaxbMovieReaderTest {
+public class XmlMovieReaderTest {
 	
 //	@Autowired
-	JaxbMovieReader movieReader;
+	XmlMovieReader movieReader;
 	
 	@Autowired
-	JaxbMovieReaderTest(JaxbMovieReader movieReader) {
+	XmlMovieReaderTest(XmlMovieReader movieReader) {
 		this.movieReader = movieReader;
 	}
 	
