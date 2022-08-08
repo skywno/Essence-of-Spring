@@ -71,6 +71,7 @@ public abstract class AbstractMetadataResourceMovieReader implements ResourceLoa
 		
 		log.info(resource + "is ready");
 		
+		
 	}
 
 	@PreDestroy
