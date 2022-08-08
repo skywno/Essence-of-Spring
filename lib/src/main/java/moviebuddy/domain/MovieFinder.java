@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 public class MovieFinder {
 	private MovieReader movieReader;
     
+
 //	@Autowired
+//	public MovieFinder(@Qualifier("cachingMovieReader") MovieReader movieReader) {
 	public MovieFinder(MovieReader movieReader) {
 		this.movieReader = Objects.requireNonNull(movieReader);
 	}
