@@ -44,6 +44,6 @@ public class XmlMovieReaderTest {
 		Assertions.assertTrue(AopUtils.isAopProxy(movieReader));
 		
 		MovieReader target = AopTestUtils.getTargetObject(movieReader);
-		Assertions.assertTrue(XmlMovieReader.class.isAssignableFrom(target.getClass()));
+		Assertions.assertTrue(XmlMovieReader.class.isAssignableFrom(target.getClass() ));
 	}
 }

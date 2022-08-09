@@ -16,6 +16,8 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import javax.cache.annotation.CacheResult;
+
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cache.Cache;
@@ -38,8 +40,9 @@ public class CsvMovieReader extends AbstractMetadataResourceMovieReader implemen
      * 
      * @return 불러온 영화 목록
      */
+	
 	@Override
-    public List<Movie> loadMovies() {
+	public List<Movie> loadMovies() {
 		try {
         	final InputStream content = getMetadataResource().getInputStream();
             final Function<String, Movie> mapCsv = csv -> {
